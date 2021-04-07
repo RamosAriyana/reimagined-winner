@@ -14,18 +14,22 @@ public class Test {
 		  
 		IntegerSet set1 = new IntegerSet(setA);
 		IntegerSet set2 = new IntegerSet(setB);
-		  
+		
 		set1.add(1);
 		set1.add(3);
-		set1.add(5);
+		set1.add(4);
+		set1.add(6);
+		set1.add(3);
+		set1.add(8);
 		set1.add(7);
-		set1.add(9);
 		  
-		set2.add(0);
+		set2.add(1);
 		set2.add(2);
+		set2.add(3);
 		set2.add(4);
+		set2.add(5);
 		set2.add(6);
-		set2.add(8);
+		set2.add(7);
 		  
 		System.out.println("Set 1: " + set1.getSet());
 		System.out.println("Set 2: " + set2.getSet());
@@ -33,6 +37,14 @@ public class Test {
 		System.out.println("Is Equal: " + set1.equals(set2));
 		
 		System.out.println("Contains '7': " + set1.contains(7));
+		
+		set1.union(set2);
+		
+		System.out.println("Union: " + set1.toString());
+		
+		set1.diff(set2);
+		
+		System.out.println("Difference: " + set1.toString());
 		  
 		try {
 			System.out.println("Largest Element in Set 1: " + set1.largest());
@@ -55,13 +67,14 @@ public class Test {
 		System.out.println("Contains '7': " + set1.contains(7));
 		
 		System.out.println("Set 1 Size: " + set1.length());
-		System.out.println("Set 2 Size: " + set1.length());
+		System.out.println("Set 2 Size: " + set2.length());
 		
 		
 		System.out.println("Set 1 Is Empty: " + set1.isEmpty());
-		System.out.println("Set 2 Is Empty: " + set1.isEmpty());
+		System.out.println("Set 2 Is Empty: " + set2.isEmpty());
 		
 		set1.clear();
+		
 		System.out.println("Set 1: " + set1.getSet());
 		System.out.println("Set 2: " + set2.getSet());
 		
@@ -118,7 +131,29 @@ public class Test {
 		} catch (IntegerSetException e) {
 			System.out.println(e);
 		}
-		      
+		
+		System.out.println("Set 1 Is Empty: " + set1.isEmpty());
+		System.out.println("Set 2 Is Empty: " + set2.isEmpty());
+		
+		set1.add(1);
+		set1.add(3);
+		set1.add(4);
+		set1.add(6);
+		set1.add(3);
+		set1.add(8);
+		set1.add(7);
+		  
+		set2.add(1);
+		set2.add(2);
+		set2.add(3);
+		set2.add(4);
+		set2.add(5);
+		set2.add(6);
+		set2.add(7);
+		
+		set1.intersect(set2);
+		
+		System.out.println("Intersection: " + set1.toString());
 	}
 
 }

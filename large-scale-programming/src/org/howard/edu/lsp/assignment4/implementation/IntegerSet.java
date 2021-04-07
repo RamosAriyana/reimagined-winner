@@ -40,31 +40,18 @@ public class IntegerSet {
         }
         
         ArrayList<Integer> temp1 = (ArrayList<Integer>) set;
-        
         ArrayList<Integer> temp2 = list2;
         
         // Sort each set to compare
         Collections.sort(temp1);
         Collections.sort(temp2);
         
-        // Iterate through the elements in each set and compare; if the elements are the same, then they are equal
-        for (int i = 0; i < temp1.size(); i++) {
-            if (temp1.get(i) != temp2.get(i)) {
-                return false;
-            }
-        }
-        return true;
+        return temp1.equals(temp2);
 	}; 
 
 	// Returns true if the set contains the value, otherwise false
 	public boolean contains(int value) {
-		// An element is taken in as a parameter to search for then we iterate through each value in set; returns true if element is found
-		for (int i = 0; i < set.size(); i++) {
-	        if (set.contains(value)) {
-	            return true;
-	        }
-	    }
-	    return false;
+		return set.contains(value);
 	};    
 
 	// Returns the largest item in the set; Throws a IntegerSetException if the set is empty 
@@ -83,7 +70,6 @@ public class IntegerSet {
                 max = set.get(i);
             }
         }
-        
         return max;
 	}; 
 
@@ -109,63 +95,54 @@ public class IntegerSet {
 
 	// Adds an item to the set or does nothing it already there	
  	public void add(int item) {
- 		// Create a boolean variable and initialize it as false
- 		boolean is_found = false;
- 		
- 		// Iterate through each element in set; if the item is found, just return true
- 		for (int i = 0; i < set.size(); i++) {
- 			if (set.get(i) == item) {
- 				is_found = true;
- 			}
+ 		if (!contains(item)) {
+ 			set.add(item);
         }
-        
- 		// If the item isn't found; add it to set
-        if (is_found == false) {
-            set.add(item);
-        }
- 		
  	}; // adds item to s or does nothing if it is in set
 
 	// Removes an item from the set or does nothing if not there
  	public void remove(int item) {
- 		// Iterate through each element in set; if the item is found, remove it from set
- 		for (int i = 0; i < set.size(); i++) {
-            if (set.get(i) == item) {
-            	set.remove(i);
-            }
-        }
+ 		set.remove(Integer.valueOf(item));
  	}; 
 
  	// Set union
 	public void union(IntegerSet intSetb) {
+		ArrayList<Integer> temp = (ArrayList<Integer>) intSetb.getSet();
+	    set.removeAll(temp);
+	    set.addAll(temp);
+	    Collections.sort(set);
+	    return;
  	};
 
  	// Set intersection
  	public void intersect(IntegerSet intSetb) {
+ 		ArrayList<Integer> temp = (ArrayList<Integer>) intSetb.getSet();
+ 	      
+        set.retainAll(temp);
+       
+        return;
  	}; 
 
  	// Set difference, i.e., s1 – s2
  	public void diff(IntegerSet intSetb) {
+ 		ArrayList<Integer> temp = (ArrayList<Integer>) intSetb.getSet();
+	      
+        set.removeAll(temp);
+       
+        return;
  	}; // set difference, i.e. s1 - s2
 
  	// Returns true if the set is empty, false otherwise
  	public boolean isEmpty() {
- 		// If the size of the list is 0, then it is empty
- 		if (set.size() == 0) {
-            return true;
-        }
- 		
- 		else {
- 			return false;
- 		}
+ 		return set.isEmpty();
  	}; 
 
  	// Return String representation of your set
-//	public String toString() {
-//		return str_list;
-// 	}
+	public String toString() {
+		return set.toString();
+ 	}
 
 	public List<Integer> getSet() {
 		return set;
 	}
-}					
+}		
