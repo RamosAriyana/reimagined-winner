@@ -217,17 +217,19 @@ public class IntegerSetTest {
 	}
 	
 	@Test
-	@DisplayName("Test case for largest with empty set")
-	public void testLargest2() {
+	@DisplayName("Throw exception for largest with empty set")
+	public void testLargest_THROWS_EXCEPTION() {
 		ArrayList<Integer> setA = new ArrayList<>();
 		IntegerSetCode set1 = new IntegerSetCode(setA);
-	    int expectedValue = 0;
-	    try {
-			expectedValue = set1.largest();
-		} catch (IntegerSetCodeException e) {
-			e.printStackTrace();
-		}
-	    assertEquals(0, expectedValue);
+		
+		Exception exception = assertThrows(IntegerSetCodeException.class, () -> {
+			set1.largest();
+		});
+		
+		String expectedMessage = "Set is Empty";
+		String actualMessage = exception.getMessage();
+		
+		assertTrue(actualMessage.contains(expectedMessage));
 	}
 
 	@Test
@@ -268,17 +270,19 @@ public class IntegerSetTest {
 	}
 	
 	@Test
-	@DisplayName("Test case for smallest with empty set")
-	public void testSmallest2() {
+	@DisplayName("Throw exception for smallest with empty set")
+	public void testSmallest_THROWS_EXCEPTION() {
 		ArrayList<Integer> setA = new ArrayList<>();
 		IntegerSetCode set1 = new IntegerSetCode(setA);
-	    int expectedValue = 0;
-	    try {
-	        expectedValue = set1.smallest();
-	    } catch (IntegerSetCodeException e) {
-	        e.printStackTrace();
-	    }
-	    assertEquals(0, expectedValue);
+		
+		Exception exception = assertThrows(IntegerSetCodeException.class, () -> {
+			set1.smallest();
+		});
+		
+		String expectedMessage = "Set is Empty";
+		String actualMessage = exception.getMessage();
+		
+		assertTrue(actualMessage.contains(expectedMessage));
 	}
 
 	@Test
@@ -483,6 +487,24 @@ public class IntegerSetTest {
 		String expectedValue = "[-9, -5, -1, 0, 3, 6, 7]";
 		assertEquals(expectedValue, set1.toString());
 	}
+	
+//	@Test
+//	@DisplayName("Throw exception for union with empty set")
+//	public void testUnion_THROWS_EXCEPTION() {
+//		ArrayList<Integer> setA = new ArrayList<>();
+//		ArrayList<Integer> setB = new ArrayList<>();
+//		IntegerSetCode set1 = new IntegerSetCode(setA);
+//		IntegerSetCode set2 = new IntegerSetCode(setB);
+//		
+//		Exception exception = assertThrows(IntegerSetCodeException.class, () -> {
+//			set1.union(set2);
+//		});
+//		
+//		String expectedMessage = "Empty Set in Union";
+//		String actualMessage = exception.getMessage();
+//		
+//		assertTrue(actualMessage.contains(expectedMessage));
+//	}
 
 	@Test
 	@DisplayName("Test case for intersect with 2 unique sets")
