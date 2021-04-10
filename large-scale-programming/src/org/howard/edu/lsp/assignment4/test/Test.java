@@ -15,21 +15,21 @@ public class Test {
 		IntegerSet set1 = new IntegerSet(setA);
 		IntegerSet set2 = new IntegerSet(setB);
 		
-//		set1.add(1);
-//		set1.add(3);
-//		set1.add(4);
-//		set1.add(6);
-//		set1.add(3);
-//		set1.add(8);
-//		set1.add(7);
-//		  
-//		set2.add(1);
-//		set2.add(2);
-//		set2.add(3);
-//		set2.add(4);
-//		set2.add(5);
-//		set2.add(6);
-//		set2.add(7);
+		set1.add(1);
+		set1.add(3);
+		set1.add(4);
+		set1.add(6);
+		set1.add(3);
+		set1.add(8);
+		set1.add(7);
+		  
+		set2.add(1);
+		set2.add(2);
+		set2.add(3);
+		set2.add(4);
+		set2.add(5);
+		set2.add(6);
+		set2.add(7);
 		
 //		set1.add(1);
 //		set1.add(3);
@@ -43,18 +43,18 @@ public class Test {
 //		set2.add(6);
 //		set2.add(8);
 		
-		set1.add(10);
-		set1.add(20);
-		set1.add(30);
-		set1.add(40);
-		set1.add(50);
-		//set1.add(50);
-		//set1.add(-9);
-		
-		set2.add(-30);
-		set2.add(-50);
-		set2.add(70);
-		set2.add(90);
+//		set1.add(10);
+//		set1.add(20);
+//		set1.add(30);
+//		set1.add(40);
+//		set1.add(50);
+//		//set1.add(50);
+//		//set1.add(-9);
+//		
+//		set2.add(-30);
+//		set2.add(-50);
+//		set2.add(70);
+//		set2.add(90);
 		//set2.add(9);
 		  
 		System.out.println("Set 1: " + set1.getSet());
@@ -68,9 +68,9 @@ public class Test {
 		
 		System.out.println("Intersection: " + set1.toString());
 		
-		//set1.union(set2);
+		set1.union(set2);
 		
-		//System.out.println("Union: " + set1.toString());
+		System.out.println("Union: " + set1.toString());
 		
 		//set1.diff(set2);
 		
