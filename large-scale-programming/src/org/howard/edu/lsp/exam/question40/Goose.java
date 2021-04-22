@@ -6,9 +6,18 @@ public class Goose extends Animal implements Flying {
 	public Goose() {
 		super("Goose");
 	}
+	public void speak() {
+		phrase = "This " + this.getClass().getSimpleName()+ " speaks.";
+		return;
+	}
+	
+	public void move() {
+		phrase = "This " + this.getClass().getSimpleName()+ " moves forward.";
+		return;
+	}
 	
 	public void fly() {
-		phrase = "This " + this.getClass().getName()+ " is flying.";
+		phrase = "This " + this.getClass().getSimpleName()+ " is flying.";
 		return;
 	}
 	
