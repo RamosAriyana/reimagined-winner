@@ -21,22 +21,10 @@ public class SongsDatabase {
 	 * @param songTitle - Title of the song; stored as vale
 	 */
 	public void addSong(String genre, String songTitle) {
-//		if (!map.containsKey(genre)) {
-//            map.get(genre).add(songTitle); //adding the song title and genre
-//        } //else {
-//            // If the genre does not exist, create a new set and add to Map
-//            //Set<String> newSet = new HashSet<String>();
-//            //newSet.add(songTitle);
-//            map.put(genre, new HashSet<String>());
-		 if(!map.containsKey(genre)){
-	            //so the genre is not present
-	            //we need to add this genre and allocate a new
-	            //HashSet for this genre
-	            map.put(genre, new HashSet<String>());
-	        }
-	        //add the song to the set of genre
-	        map.get(genre).add(songTitle);
-        //}
+		 if (!map.containsKey(genre)) {
+			 map.put(genre, new HashSet<String>());
+	     }
+		 map.get(genre).add(songTitle);
 	}
 		
 	/*
@@ -54,7 +42,6 @@ public class SongsDatabase {
 	 * @return genre - If key found, return the genre 
 	 * @return "Song not Found" if key not found
 	 */
-	/* Return genre, i.e., jazz, given a song title */
 	public String getGenreOfSong(String songTitle) {
 		for (Map.Entry<String, Set<String>> entry : map.entrySet()) {
             if (entry.getValue().contains(songTitle)) {
@@ -68,7 +55,8 @@ public class SongsDatabase {
 	 * This method returns the string representation of the Set from the getSongs method.
 	 * @return map
 	 */
-//	public String toString() {
-//		return ((Entry<String, Set<String>>) map).getValue();
-//	}
+	public String toString() {
+		//return ((Entry<String, Set<String>>) map).getValue();
+		return map.values().toString();
+	}
 }

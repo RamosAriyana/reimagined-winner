@@ -5,9 +5,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+/*
+ * This is a class containing the test cases for the class SongsDatabase
+ */
 class SongsDatabaseTest {
 
 	@Test
@@ -17,10 +21,8 @@ class SongsDatabaseTest {
 		db.addSong("Rap", "Savage");
 		db.addSong("Rap", "Gin and Juice");
 		db.addSong("Jazz", "Always There");
-		//db.getSongs("Rap");
 		String expectedValue = "[Savage, Gin and Juice]";
-	    assertEquals(expectedValue, db.toString());
-	    assertEquals(expectedValue, db.getSongs("Rap"));
+	    assertEquals(expectedValue, db.getSongs("Rap").toString());
 	}
 	
 	@Test
@@ -33,10 +35,8 @@ class SongsDatabaseTest {
 		db.addSong("Rock", "Changes");
 		db.addSong("Pop", "Blinding Lights");
 		db.addSong("Rap", "Changes");
-		//db.getSongs("Rap");
-		String expectedValue = "[Savage, Gin and Juice, Changes]";
-	    assertEquals(expectedValue, db.toString());
-	    assertEquals(expectedValue, db.getSongs("Rap"));
+		String expectedValue = "[Changes, Savage, Gin and Juice]";
+	    assertEquals(expectedValue, db.getSongs("Rap").toString());
 	}
 	
 	@Test
@@ -49,10 +49,8 @@ class SongsDatabaseTest {
 		db.addSong("Rock", "Someday");
 		db.addSong("Pop", "Blinding Lights");
 		db.addSong("Rock", "Someday");
-		//db.getSongs("Rap");
 		String expectedValue = "[Someday]";
-	    assertEquals(expectedValue, db.toString());
-	    assertEquals(expectedValue, db.getSongs("Rap"));
+	    assertEquals(expectedValue, db.getSongs("Rock").toString());
 	}
 	
 	@Test
@@ -65,10 +63,8 @@ class SongsDatabaseTest {
 		db.addSong("Rock", "Someday");
 		db.addSong("Pop", "Blinding Lights");
 		db.addSong("Country", "");
-		//db.getSongs("Rap");
 		String expectedValue = "[]";
-	    assertEquals(expectedValue, db.toString());
-	    assertEquals(expectedValue, db.getSongs("Rap"));
+	    assertEquals(expectedValue, db.getSongs("Country").toString());
 	}
 	
 	@Test
@@ -81,10 +77,8 @@ class SongsDatabaseTest {
 		db.addSong("Rock", "Someday");
 		db.addSong("Pop", "Blinding Lights");
 		db.addSong("", "Old Town Road");
-		//db.getSongs("Rap");
-		String expectedValue = "[]";
-	    assertEquals(expectedValue, db.toString());
-	    assertEquals(expectedValue, db.getSongs("Rap"));
+		String expectedValue = "[Old Town Road]";
+	    assertEquals(expectedValue, db.getSongs("").toString());
 	}
 	
 	@Test
@@ -97,14 +91,12 @@ class SongsDatabaseTest {
 		db.addSong("Rock", "Someday");
 		db.addSong("Pop", "Blinding Lights");
 		db.addSong("", "");
-		//db.getSongs("Rap");
 		String expectedValue = "[]";
-	    assertEquals(expectedValue, db.toString());
-	    assertEquals(expectedValue, db.getSongs("Rap"));
+	    assertEquals(expectedValue, db.getSongs("").toString());
 	}
 	
 	@Test
-	@DisplayName("Test case for addSong with duplicate song titles")
+	@DisplayName("Test case for addSong with duplicate song titles and genres")
 	void testAddSong6() {
 		SongsDatabase db = new SongsDatabase();
 		db.addSong("Rap", "Savage");
@@ -113,10 +105,8 @@ class SongsDatabaseTest {
 		db.addSong("Rock", "Someday");
 		db.addSong("Pop", "Blinding Lights");
 		db.addSong("Rap", "Savage");
-		//db.getSongs("Rap");
-		String expectedValue = "[]";
-	    assertEquals(expectedValue, db.toString());
-	    assertEquals(expectedValue, db.getSongs("Rap"));
+		String expectedValue = "[Savage, Gin and Juice]";
+	    assertEquals(expectedValue, db.getSongs("Rap").toString());
 	}
 
 	@Test
@@ -126,13 +116,11 @@ class SongsDatabaseTest {
 		db.addSong("Rap", "Savage");
 		db.addSong("Rap", "Gin and Juice");
 		db.addSong("Jazz", "Always There");
-		db.getSongs("Pop");
-		String expectedValue = "[]";
-	    assertEquals(expectedValue, db.toString());
+	    Assertions.assertNull(db.getSongs("Pop"));
 	}
 	
 	@Test
-	@DisplayName("Test case for getSongs with duplicate keys(genres)")
+	@DisplayName("Test case for getSongs with duplicate keys(genres) and song titles")
 	void testGetSongs1() {
 		SongsDatabase db = new SongsDatabase();
 		db.addSong("Rap", "Savage");
@@ -141,9 +129,8 @@ class SongsDatabaseTest {
 		db.addSong("Rock", "Someday");
 		db.addSong("Pop", "Blinding Lights");
 		db.addSong("Rock", "Someday");
-		db.getSongs("Rock");
 		String expectedValue = "[Someday]";
-	    assertEquals(expectedValue, db.toString());
+	    assertEquals(expectedValue, db.getSongs("Rock").toString());
 	}
 	
 	@Test
@@ -151,7 +138,7 @@ class SongsDatabaseTest {
 	void testGetSongs2() {
 		SongsDatabase db = new SongsDatabase();
 		db.getSongs("Pop");
-		String expectedValue = "[Savage, Gin and Juice]";
+		String expectedValue = "[]";
 	    assertEquals(expectedValue, db.toString());
 	}
 
