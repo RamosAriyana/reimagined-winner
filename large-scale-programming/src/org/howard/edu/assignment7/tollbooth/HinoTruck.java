@@ -1,9 +1,14 @@
 package org.howard.edu.assignment7.tollbooth;
 
+/**
+ * This class implements and constructs a Hino truck.
+ */
 public class HinoTruck implements Truck {
+	/**
+	 * Declares attributes of the RenaultTruck class.
+	 */
 	private int numaxles;
 	private int totalweight;
-	private String make = "Hino";
 	
 	/**
 	 * This constructs a Hino truck with the axles and weight information that is an argument when called in the main.
@@ -29,14 +34,6 @@ public class HinoTruck implements Truck {
 	 */
 	public int getTotalWeight() {
 		return this.totalweight;
-	}
-	
-	/**
-	 * This function gets the make of the truck
-	 * @return make
-	 */
-	public String getMake() {
-		return this.make;
 	}
 
 }

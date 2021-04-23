@@ -1,6 +1,12 @@
 package org.howard.edu.assignment7.tollbooth;
 
+/**
+ * This class implements and constructs a Renault truck.
+ */
 public class RenaultTruck implements Truck {
+	/**
+	 * Declares attributes of the RenaultTruck class.
+	 */
 	private int numaxles;
 	private int totalweight;
 	

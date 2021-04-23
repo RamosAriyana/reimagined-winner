@@ -1,61 +1,63 @@
+/**
+ * @author Ariyana Ramos
+ */
 package org.howard.edu.assignment7.tollbooth;
 
+/**
+ * This class implements a booth that calculates the amount of the toll to be paid
+ * and keeps track of the total of receipts and the number of trucks that have passed through
+ */
 public class ColumbusTollBooth implements TollBooth {
 	private int receiptsSinceCollection;
 	private int trucksSinceCollection;
 	
-	int numaxles;
-	int totalweight;
-	int tollDue;
+	String message;
 	
+	/**
+	 * This method is used to calculate the toll that the truck has due based on the information on the truck.
+	 * Increments the number of trucks that have visited and adds the total of receipts
+	 * @param truck This parameter takes in the truck instance so that it can get information on the truck to utilize.
+	 */
 	public void calculateToll(Truck truck) {
-		this.numaxles = truck.getAxles();
-		this.totalweight = truck.getTotalWeight();
-		this.tollDue = 5 * numaxles + 10 * (totalweight/1000);
+		int axles = truck.getAxles();
+		int totalWeight = truck.getTotalWeight();
+		int tollDue = 5 * axles + 10 * (totalWeight/1000);
+		message = "Truck Arrival - Axles: " + axles + " Total Weight: " + totalWeight
+		          + " Toll Due: " + tollDue;
 		trucksSinceCollection = trucksSinceCollection + 1;
 		receiptsSinceCollection = receiptsSinceCollection + tollDue;
 		return;
 	}
 	
 	/**
-	 * This method displays information about receipts and trucks.
+	 * This method displays the total collected toll receipts and the number of trucks that have passed
+	 * through the toll booth.
 	 */
 	public void displayData() {
-//		System.out.print("Totals since last collection - Receipts: $");
-//		System.out.print(receiptsSinceCollection);
-//		System.out.print(" Trucks: ");
-//		System.out.println(trucksSinceCollection);
-//		System.out.println("*************************************************************");
-		//return;
-		DisplaytoString();
+		message = "Totals since last collection - Receipts: $" + receiptsSinceCollection + " Trucks: " + 
+				trucksSinceCollection;
+		return;
     }
 	
 	/**
-	 * This method resets the receipts and trucks variables back to 0, prints out 
-	 * the total receipts of trucks and dues, then resets them back to 0.
+	 * This method displays the most recent info in the displayData() method 
+	 * then resets the receipts and trucks totals to 0.
 	 */
 	public void reset() {
-//		System.out.print("*** Collecting receipts ***");
-//		System.out.print("\n");
-		//displayData();
+		message = "*** Collecting receipts ***";
+		displayData();
 		receiptsSinceCollection = 0;
 		trucksSinceCollection = 0;
+		return;
 	}
 	
-	public String CalculatetoString() {
-		return "Truck Arrival - Axles: " + this.numaxles + " Total Weight: " + this.totalweight
-	          + " Toll Due: " + this.tollDue;
-
-    }
-	
-	public String DisplaytoString() {
-		return "Totals since last collection - Receipts: $" + this.receiptsSinceCollection + " Trucks: " + 
-				this.trucksSinceCollection + "\n ************************************************************* \n";
-
-    }
-	
-	public String ResettoString() {
-		return "*** Collecting receipts ***";
+	/**
+	 * This method returns the String representation of the message to be displayed on the
+	 * toll booth screen.
+	 * @return String representation of message
+	 */
+	public String toString() {
+		return message.toString();
 
     }
 }
